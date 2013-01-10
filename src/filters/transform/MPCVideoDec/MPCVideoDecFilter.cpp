@@ -631,7 +631,7 @@ CMPCVideoDecFilter::CMPCVideoDecFilter(LPUNKNOWN lpunk, HRESULT* phr)
         if (ERROR_SUCCESS == key.QueryDWORDValue(_T("DXVACheckCompatibility"), dw)) {
             m_nDXVACheckCompatibility = dw;
         }
-        if (ERROR_SUCCESS == key.QueryDWORDValue(_T("DisableDXVA_SD"), dw)) {
+        if (ERROR_SUCCESS == key.QueryDWORDValue(_T("DisableDXVASD"), dw)) {
             m_nDXVA_SD = dw;
         }
 
@@ -648,7 +648,7 @@ CMPCVideoDecFilter::CMPCVideoDecFilter(LPUNKNOWN lpunk, HRESULT* phr)
     m_nARMode = AfxGetApp()->GetProfileInt(_T("Filters\\MPC Video Decoder"), _T("ARMode"), m_nARMode);
 #endif
     m_nDXVACheckCompatibility = AfxGetApp()->GetProfileInt(_T("Filters\\MPC Video Decoder"), _T("DXVACheckCompatibility"), m_nDXVACheckCompatibility);
-    m_nDXVA_SD = AfxGetApp()->GetProfileInt(_T("Filters\\MPC Video Decoder"), _T("DisableDXVA_SD"), m_nDXVA_SD);
+    m_nDXVA_SD = AfxGetApp()->GetProfileInt(_T("Filters\\MPC Video Decoder"), _T("DisableDXVASD"), m_nDXVA_SD);
 
     m_interlacedFlag = (MPCVD_INTERLACED_FLAG)AfxGetApp()->GetProfileInt(_T("Filters\\MPC Video Decoder"), _T("InterlacedFlag"), m_interlacedFlag);
 #endif
@@ -2507,7 +2507,7 @@ STDMETHODIMP CMPCVideoDecFilter::Apply()
         key.SetDWORDValue(_T("ActiveCodecs"), m_nActiveCodecs);
         key.SetDWORDValue(_T("ARMode"), m_nARMode);
         key.SetDWORDValue(_T("DXVACheckCompatibility"), m_nDXVACheckCompatibility);
-        key.SetDWORDValue(_T("DisableDXVA_SD"), m_nDXVA_SD);
+        key.SetDWORDValue(_T("DisableDXVASD"), m_nDXVA_SD);
         key.SetDWORDValue(_T("InterlacedFlag"), m_interlacedFlag);
     }
 #else

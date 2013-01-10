@@ -524,7 +524,7 @@ CMpegSplitterFilter::CMpegSplitterFilter(LPUNKNOWN pUnk, HRESULT* phr, const CLS
             m_csSubtitlesLanguageOrder = CString(buff);
         }
 
-        if (ERROR_SUCCESS == key.QueryDWORDValue(_T("VC1_Decoder_Output"), dw)) {
+        if (ERROR_SUCCESS == key.QueryDWORDValue(_T("VC1DecoderOutput"), dw)) {
             m_nVC1_GuidFlag = dw;
         }
 
@@ -541,7 +541,7 @@ CMpegSplitterFilter::CMpegSplitterFilter(LPUNKNOWN pUnk, HRESULT* phr, const CLS
     m_ForcedSub = !!AfxGetApp()->GetProfileInt(_T("Filters\\MPEG Splitter"), _T("ForcedSub"), m_ForcedSub);
     m_csSubtitlesLanguageOrder = AfxGetApp()->GetProfileString(IDS_R_SETTINGS, IDS_RS_SUBTITLESLANGORDER, _T(""));
     m_csAudioLanguageOrder = AfxGetApp()->GetProfileString(IDS_R_SETTINGS, IDS_RS_AUDIOSLANGORDER, _T(""));
-    m_nVC1_GuidFlag = AfxGetApp()->GetProfileInt(_T("Filters\\MPEG Splitter"), _T("VC1_Decoder_Output"), m_nVC1_GuidFlag);
+    m_nVC1_GuidFlag = AfxGetApp()->GetProfileInt(_T("Filters\\MPEG Splitter"), _T("VC1DecoderOutput"), m_nVC1_GuidFlag);
     if (m_nVC1_GuidFlag < 1 || m_nVC1_GuidFlag > 3) {
         m_nVC1_GuidFlag = 1;
     }
